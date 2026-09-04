@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caramel — Torta de Chocolate</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFDF7; --white:#FFFFFF; --magenta:#B54784; --magenta-dark:#96366A;
+    --amber:#F5C46C; --amber-soft:#FAD9A0; --cream:#FBE9C6; --ink:#5B3B4F; --ink-soft:#A98CA0;
+  }
+  [data-theme="dark"]{ --bg:#2B1F27; --white:#352832; --ink:#F6ECEF; --ink-soft:#C9B7C1; --cream:#4A3540; }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Quicksand',sans-serif;-webkit-font-smoothing:antialiased;}
+  img,svg{max-width:100%;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+
+  /* NAV */
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1120px;margin:0 auto;}
+  .logo span{font-family:'Pacifico',cursive;font-size:1.5rem;color:var(--magenta);}
+  .navlinks{display:flex;gap:36px;list-style:none;margin:0;padding:0;}
+  .navlinks a{color:var(--ink);text-decoration:none;font-weight:600;font-size:0.95rem;}
+  .navlinks a.active{color:var(--magenta);}
+  .cart{display:flex;align-items:center;gap:6px;color:var(--magenta);font-weight:700;background:none;border:none;font-family:inherit;font-size:1rem;}
+
+  /* BREADCRUMB */
+  .crumbs{max-width:1120px;margin:0 auto;padding:16px 32px 0;font-size:.85rem;color:var(--ink-soft);}
+  .crumbs a{color:var(--ink-soft);text-decoration:none;}
+  .crumbs a:hover{color:var(--magenta);}
+  .crumbs .sep{margin:0 6px;}
+  .crumbs .current{color:var(--magenta);font-weight:700;}
+
+  /* DETALLE */
+  .detalle{padding:28px 32px 70px;}
+  .detalle-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:56px;align-items:start;}
+
+  /* GALERIA */
+  .galeria-main{aspect-ratio:1;border-radius:22px;overflow:hidden;background:linear-gradient(150deg,var(--cream),var(--amber-soft));display:flex;align-items:center;justify-content:center;font-size:5rem;margin-bottom:16px;}
+  .galeria-thumbs{display:flex;gap:12px;}
+  .thumb{width:76px;height:76px;border-radius:14px;background:linear-gradient(150deg,var(--cream),var(--amber-soft));display:flex;align-items:center;justify-content:center;font-size:1.8rem;cursor:pointer;border:2px solid transparent;opacity:.7;}
+  .thumb.active{border-color:var(--magenta);opacity:1;}
+
+  /* INFO */
+  .cat-tag{display:inline-block;background:var(--cream);color:var(--magenta-dark);font-size:.8rem;font-weight:700;padding:6px 14px;border-radius:999px;margin-bottom:14px;}
+  .info h1{font-size:2rem;margin:0 0 12px;color:var(--ink);line-height:1.15;}
+  .info .precio{font-size:1.6rem;font-weight:700;color:var(--magenta);margin-bottom:18px;display:block;}
+  .info .desc{color:var(--ink-soft);line-height:1.65;font-size:1rem;margin-bottom:22px;max-width:50ch;}
+
+  .badges{display:flex;gap:10px;flex-wrap:wrap;margin-bottom:28px;}
+  .badge{display:flex;align-items:center;gap:6px;background:var(--white);border:1px solid var(--cream);border-radius:999px;padding:8px 14px;font-size:.85rem;color:var(--ink);font-weight:600;}
+
+  .qty-row{display:flex;align-items:center;gap:20px;margin-bottom:20px;}
+  .qty-selector{display:flex;align-items:center;gap:14px;background:var(--white);border:1.5px solid var(--cream);border-radius:999px;padding:8px 18px;}
+  .qty-selector button{width:28px;height:28px;border-radius:50%;border:1.5px solid var(--magenta);background:none;color:var(--magenta);font-weight:700;font-size:1rem;cursor:pointer;}
+  .qty-selector span{font-weight:700;min-width:18px;text-align:center;}
+
+  .add-btn-lg{display:flex;align-items:center;justify-content:center;gap:10px;width:100%;background:var(--magenta);color:#fff;border:none;border-radius:999px;padding:16px 0;font-family:'Quicksand',sans-serif;font-weight:700;font-size:1.05rem;cursor:pointer;box-shadow:0 10px 24px rgba(181,71,132,.25);margin-bottom:18px;}
+  .add-btn-lg:hover{background:var(--magenta-dark);}
+
+  .nota{display:flex;gap:10px;align-items:flex-start;background:var(--cream);border-radius:14px;padding:14px 16px;font-size:.85rem;color:var(--magenta-dark);line-height:1.5;}
+  .nota .icon{flex-shrink:0;font-size:1rem;}
+
+  /* RELACIONADOS */
+  .relacionados{background:var(--white);padding:70px 32px;}
+  .section-head{max-width:520px;margin-bottom:36px;}
+  .eyebrow-line{width:44px;height:3px;background:var(--amber);border-radius:2px;margin-bottom:16px;}
+  .section-head h2{font-size:1.6rem;margin:0 0 8px;color:var(--ink);}
+  .section-head p{color:var(--ink-soft);margin:0;line-height:1.5;font-size:.95rem;}
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
+  .card{background:var(--bg);border-radius:18px;overflow:hidden;text-decoration:none;color:inherit;display:block;}
+  .card-img{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:linear-gradient(150deg,var(--cream),var(--amber-soft));font-size:2.2rem;}
+  .card-body{padding:16px 18px 18px;}
+  .card-body h3{margin:0 0 6px;font-size:.98rem;color:var(--ink);font-weight:700;}
+  .card-body .price{color:var(--magenta);font-weight:700;font-size:.95rem;}
+
+  /* FOOTER */
+  footer{background:var(--magenta);color:#fff;padding:56px 32px 28px;}
+  .foot-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;}
+  .foot-inner .logo span{color:#fff;font-size:1.7rem;}
+  footer p{color:#F0D3E4;font-size:.92rem;line-height:1.6;}
+  footer h4{font-size:.95rem;margin:0 0 14px;color:#fff;}
+  footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  footer a{color:#F0D3E4;text-decoration:none;font-size:.92rem;}
+  footer a:hover{color:var(--amber);}
+  .bottom{max-width:1120px;margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.18);color:#E0AFCB;font-size:.82rem;text-align:center;}
+
+  @media (max-width:860px){
+    .detalle-inner{grid-template-columns:1fr;gap:28px;}
+    .grid{grid-template-columns:repeat(2,1fr);}
+    .foot-inner{grid-template-columns:1fr;gap:28px;}
+    .navlinks{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><span>Caramel</span></div>
+  <ul class="navlinks">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#" class="active">Productos</a></li>
+    <li><a href="#">Nosotras</a></li>
+    <li><a href="#">Contacto</a></li>
+  </ul>
+  <button class="cart">🛍 <span>0</span></button>
+</nav>
+
+<div class="crumbs">
+  <a href="#">Inicio</a><span class="sep">/</span><a href="#">Productos</a><span class="sep">/</span><a href="#">Tortas</a><span class="sep">/</span><span class="current">Torta de Chocolate</span>
+</div>
+
+<section class="detalle">
+  <div class="detalle-inner">
+    <div class="galeria">
+      <div class="galeria-main">🍫</div>
+      <div class="galeria-thumbs">
+        <div class="thumb active">🍫</div>
+        <div class="thumb">🎂</div>
+        <div class="thumb">🍰</div>
+      </div>
+    </div>
+
+    <div class="info">
+      <span class="cat-tag">Tortas</span>
+      <h1>Torta de Chocolate</h1>
+      <span class="precio">$28.500</span>
+      <p class="desc">Bizcochuelo húmedo de chocolate, relleno y cubierto con ganache, decorado con virutas de chocolate semiamargo. Ideal para cumpleaños y celebraciones.</p>
+
+      <div class="badges">
+        <div class="badge">🍽 10-12 porciones</div>
+        <div class="badge">📅 Con 48hs de anticipación</div>
+      </div>
+
+      <div class="qty-row">
+        <div class="qty-selector">
+          <button>−</button>
+          <span>1</span>
+          <button>+</button>
+        </div>
+      </div>
+
+      <button class="add-btn-lg">🛍 Agregar al Carrito</button>
+
+      <div class="nota">
+        <span class="icon">💬</span>
+        <span>¿Necesitás una torta con una fecha o tamaño especial? Coordinalo directo por WhatsApp después de agregarla al carrito.</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="relacionados">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow-line"></div>
+      <h2>También te puede gustar</h2>
+      <p>Otras tortas de la misma categoría.</p>
+    </div>
+    <div class="grid">
+      <a class="card" href="#"><div class="card-img">🍰</div><div class="card-body"><h3>Vainilla y Dulce de Leche</h3><span class="price">$26.000</span></div></a>
+      <a class="card" href="#"><div class="card-img">🍓</div><div class="card-body"><h3>Frutilla y Crema</h3><span class="price">$27.000</span></div></a>
+      <a class="card" href="#"><div class="card-img">🥥</div><div class="card-body"><h3>Coco y Manjar</h3><span class="price">$27.500</span></div></a>
+      <a class="card" href="#"><div class="card-img">🎂</div><div class="card-body"><h3>Torta Personalizada</h3><span class="price">Desde $30.000</span></div></a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div>
+      <div class="logo"><span>Caramel</span></div>
+      <p style="margin-top:14px;max-width:32ch;">Pastelería artesanal que endulza tus momentos especiales con creaciones únicas y deliciosas.</p>
+    </div>
+    <div>
+      <h4>Enlaces</h4>
+      <ul><li><a href="#">Inicio</a></li><li><a href="#">Productos</a></li><li><a href="#">Nosotras</a></li><li><a href="#">Contacto</a></li></ul>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul><li><a href="#">Buenos Aires, Argentina</a></li><li><a href="#">+54 9 11 0000 0000</a></li><li><a href="#">hola@caramel.com.ar</a></li></ul>
+    </div>
+  </div>
+  <div class="bottom">© 2026 Caramel · Pura dulzura. Todos los derechos reservados.</div>
+</footer>
+
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caramel — Productos</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFDF7;
+    --white:#FFFFFF;
+    --magenta:#B54784;
+    --magenta-dark:#96366A;
+    --amber:#F5C46C;
+    --amber-soft:#FAD9A0;
+    --cream:#FBE9C6;
+    --ink:#5B3B4F;
+    --ink-soft:#A98CA0;
+  }
+  [data-theme="dark"]{
+    --bg:#2B1F27; --white:#352832; --ink:#F6ECEF; --ink-soft:#C9B7C1; --cream:#4A3540;
+  }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Quicksand',sans-serif;-webkit-font-smoothing:antialiased;}
+  img,svg{max-width:100%;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+
+  /* NAV */
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1120px;margin:0 auto;}
+  .logo span{font-family:'Pacifico',cursive;font-size:1.5rem;color:var(--magenta);}
+  .navlinks{display:flex;gap:36px;list-style:none;margin:0;padding:0;}
+  .navlinks a{color:var(--ink);text-decoration:none;font-weight:600;font-size:0.95rem;position:relative;}
+  .navlinks a.active{color:var(--magenta);}
+  .navlinks a.active::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:3px;background:var(--amber);border-radius:2px;}
+  .cart{display:flex;align-items:center;gap:6px;color:var(--magenta);font-weight:700;background:none;border:none;font-family:inherit;font-size:1rem;cursor:pointer;}
+
+  /* PAGE HEADER */
+  .page-header{padding:20px 32px 46px;text-align:left;}
+  .page-header .wrap{}
+  .crumbs{font-size:.85rem;color:var(--ink-soft);margin-bottom:14px;}
+  .crumbs a{color:var(--ink-soft);text-decoration:none;}
+  .crumbs .sep{margin:0 6px;}
+  .crumbs .current{color:var(--magenta);font-weight:700;}
+  .page-header h1{font-size:2.3rem;margin:0 0 10px;color:var(--ink);}
+  .page-header h1 em{font-family:'Pacifico',cursive;font-style:normal;color:var(--magenta);}
+  .page-header p{color:var(--ink-soft);max-width:52ch;margin:0;line-height:1.55;}
+
+  /* CATEGORY SECTIONS */
+  .cat-section{padding:34px 32px;}
+  .cat-section:nth-of-type(odd){background:var(--white);}
+  .cat-heading{display:flex;align-items:baseline;justify-content:space-between;margin-bottom:28px;flex-wrap:wrap;gap:10px;}
+  .cat-heading-left{display:flex;align-items:center;gap:14px;}
+  .cat-heading .emoji-badge{width:44px;height:44px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:1.4rem;flex-shrink:0;}
+  .cat-heading h2{font-size:1.5rem;margin:0;color:var(--ink);}
+  .cat-heading .count{color:var(--ink-soft);font-size:.9rem;}
+
+  .grid{display:grid;grid-template-columns:repeat(4,1fr);gap:26px;}
+  
+  .card{background:var(--bg);border-radius:18px;overflow:hidden;display:flex;flex-direction:column;}
+  .cat-section:nth-of-type(odd) .card{background:var(--bg);}
+  .card-link{text-decoration:none;color:inherit;display:block;}
+  .card-img{aspect-ratio:1;display:flex;align-items:center;justify-content:center;background:linear-gradient(150deg,var(--cream),var(--amber-soft));font-size:2.4rem;}
+  .card-body{padding:16px 18px 6px;}
+  .card-body h3{margin:0 0 6px;font-size:1rem;color:var(--ink);font-weight:700;transition:color .15s ease;}
+  .card-link:hover h3{color:var(--magenta);}
+  .card-body .price{color:var(--magenta);font-weight:700;font-size:.98rem;}
+  .card-footer{padding:12px 18px 18px;}
+  .add-btn{width:100%;background:var(--magenta);color:#fff;border:none;border-radius:999px;padding:10px 0;font-family:'Quicksand',sans-serif;font-weight:700;font-size:.88rem;cursor:pointer;display:flex;align-items:center;justify-content:center;gap:6px;transition:background .15s ease;}
+  .add-btn:hover{background:var(--magenta-dark);}
+
+  /* FOOTER */
+  footer{background:var(--magenta);color:#fff;padding:56px 32px 28px;margin-top:20px;}
+  .foot-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;}
+  .foot-inner .logo span{color:#fff;font-size:1.7rem;}
+  footer p{color:#F0D3E4;font-size:.92rem;line-height:1.6;}
+  footer h4{font-size:.95rem;margin:0 0 14px;color:#fff;}
+  footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  footer a{color:#F0D3E4;text-decoration:none;font-size:.92rem;}
+  footer a:hover{color:var(--amber);}
+  .bottom{max-width:1120px;margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.18);color:#E0AFCB;font-size:.82rem;text-align:center;}
+
+  @media (max-width:860px){
+    .grid{grid-template-columns:repeat(2,1fr);}
+    .foot-inner{grid-template-columns:1fr;gap:28px;}
+    .navlinks{display:none;}
+    .page-header h1{font-size:1.9rem;}
+  }
+
+  /* CARRITO */
+  .overlay{position:fixed;inset:0;background:rgba(58,43,53,.45);opacity:0;pointer-events:none;transition:opacity .25s ease;z-index:40;}
+  .overlay.open{opacity:1;pointer-events:auto;}
+  .drawer{position:fixed;top:0;right:0;height:100%;width:400px;max-width:92vw;background:var(--white);z-index:50;transform:translateX(100%);transition:transform .3s ease;display:flex;flex-direction:column;box-shadow:-10px 0 30px rgba(0,0,0,.12);}
+  .drawer.open{transform:translateX(0);}
+  .drawer-head{display:flex;align-items:center;justify-content:space-between;padding:22px 24px;border-bottom:1px solid var(--cream);}
+  .drawer-head h2{margin:0;font-size:1.2rem;color:var(--ink);}
+  .drawer-close{background:none;border:none;font-size:1.4rem;color:var(--ink-soft);cursor:pointer;line-height:1;}
+  .drawer-items{flex:1;overflow-y:auto;padding:16px 24px;display:flex;flex-direction:column;gap:16px;}
+  .drawer-empty{color:var(--ink-soft);text-align:center;margin-top:60px;font-size:.95rem;}
+  .drawer-item{display:flex;gap:14px;align-items:center;}
+  .drawer-item .di-img{width:56px;height:56px;border-radius:12px;background:linear-gradient(150deg,var(--cream),var(--amber-soft));display:flex;align-items:center;justify-content:center;font-size:1.6rem;flex-shrink:0;}
+  .drawer-item .di-info{flex:1;min-width:0;}
+  .drawer-item .di-info h4{margin:0 0 4px;font-size:.92rem;color:var(--ink);}
+  .drawer-item .di-info .di-price{color:var(--magenta);font-weight:700;font-size:.88rem;}
+  .di-qty{display:flex;align-items:center;gap:8px;}
+  .di-qty button{width:24px;height:24px;border-radius:50%;border:1.5px solid var(--magenta);background:none;color:var(--magenta);font-weight:700;cursor:pointer;display:flex;align-items:center;justify-content:center;font-size:.9rem;line-height:1;}
+  .di-qty span{font-size:.9rem;font-weight:700;min-width:14px;text-align:center;}
+  .di-remove{background:none;border:none;color:var(--ink-soft);font-size:1rem;cursor:pointer;padding:4px;}
+  .di-remove:hover{color:var(--magenta);}
+  .drawer-foot{padding:20px 24px 24px;border-top:1px solid var(--cream);}
+  .drawer-total{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px;}
+  .drawer-total span:first-child{color:var(--ink-soft);font-size:.95rem;}
+  .drawer-total span:last-child{color:var(--ink);font-weight:700;font-size:1.25rem;}
+  .whatsapp-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;background:var(--magenta);color:#fff;border:none;border-radius:999px;padding:14px 0;font-family:'Quicksand',sans-serif;font-weight:700;font-size:.98rem;cursor:pointer;text-decoration:none;}
+  .whatsapp-btn:hover{background:var(--magenta-dark);}
+  .whatsapp-btn:disabled{opacity:.4;cursor:not-allowed;}
+  @media (max-width:860px){ .drawer{width:100%;max-width:100%;} }
+
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><span>Caramel</span></div>
+  <ul class="navlinks">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#" class="active">Productos</a></li>
+    <li><a href="#">Nosotras</a></li>
+    <li><a href="#">Contacto</a></li>
+  </ul>
+  <button id="cartBtn" class="cart" onclick="toggleCarrito(true)">🛍 <span id="cartCount">0</span></button>
+</nav>
+
+<div class="page-header">
+  <div class="wrap">
+    <div class="crumbs"><a href="#">Inicio</a><span class="sep">/</span><span class="current">Productos</span></div>
+    <h1>Todo lo que <em>horneamos</em></h1>
+    <p>Tortas, budines y cajas de cuadraditos, hechos frescos con encargo previo. Elegí una categoría o mirá todo el catálogo.</p>
+  </div>
+</div>
+
+<section class="cat-section">
+  <div class="wrap">
+    <div class="cat-heading">
+      <div class="cat-heading-left">
+        <div class="emoji-badge">🎂</div>
+        <h2>Tortas</h2>
+      </div>
+      <span class="count">6 productos</span>
+    </div>
+    <div class="grid">
+      <div class="card"><a class="card-link" href="#"><div class="card-img">🍫</div><div class="card-body"><h3>Torta de Chocolate</h3><span class="price">$28.500</span></div></a><div class="card-footer"><button class="add-btn" data-nombre="Torta de Chocolate" data-precio="28500" data-emoji="🍫" onclick="agregarAlCarrito(this)">🛍 Agregar al Carrito</button></div></div>
+      <div class="card"><a class="card-link" href="#"><div class="card-img">🍰</div><div class="card-body"><h3>Vainilla y Dulce de Leche</h3><span class="price">$26.000</span></div></a><div class="card-footer"><button class="add-btn" data-nombre="Vainilla y Dulce de Leche" data-precio="26000" data-emoji="🍰" onclick="agregarAlCarrito(this)">🛍 Agregar al Carrito</button></div></div>
+      <div class="card"><a class="card-link" href="#"><div class="card-img">🍓</div><div class="card-body"><h3>Frutilla y Crema</h3><span class="price">$27.000</span></div></a><div class="card-footer"><button class="add-btn" data-nombre="Frutilla y Crema" data-precio="27000" data-emoji="🍓" onclick="agregarAlCarrito(this)">🛍 Agregar al Carrito</button></div></div>
+      <div class="card"><a class="card-link" href="#"><div class="card-img">🥥</div><div class="card-body"><h3>Coco y Manjar</h3><span class="price">$27.500</span></div></a><div class="card-footer"><button class="add-btn" data-nombre="Coco y Manjar" data-precio="27500" data-emoji="🥥" onclick="agregarAlCarrito(this)">🛍 Agregar al Carrito</button></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cat-section">
+  <div class="wrap">
+    <div class="cat-heading">
+      <div class="cat-heading-left">
+        <div class="emoji-badge">🍞</div>
+        <h2>Budines</h2>
+      </div>
+      <span class="count">4 productos</span>
+    </div>
+    <div class="grid">
+      <div class="card"><a class="card-link" href="#"><div class="card-img">🍋</div><div class="card-body"><h3>Budín de Limón</h3><span class="price">$8.500</span></div></a><div class="card-footer"><button class="add-btn" data-nombre="Budín de Limón" data-precio="8500" data-emoji="🍋" onclick="agregarAlCarrito(this)">🛍 Agregar al Carrito</button></div></div>
+      <div class="card"><a class="card-link" href="#"><div class="card-img">🍊</div><div class="card-body"><h3>Budín de Naranja</h3><span class="price">$8.500</span></div></a><div class="card-footer"><button class="add-btn" data-nombre="Budín de Naranja" data-precio="8500" data-emoji="🍊" onclick="agregarAlCarrito(this)">🛍 Agregar al Carrito</button></div></div>
+      <div class="card"><a class="card-link" href="#"><div class="card-img">🍫</div><div class="card-body"><h3>Budín Marmolado</h3><span class="price">$9.000</span></div></a><div class="card-footer"><button class="add-btn" data-nombre="Budín Marmolado" data-precio="9000" data-emoji="🍫" onclick="agregarAlCarrito(this)">🛍 Agregar al Carrito</button></div></div>
+      <div class="card"><a class="card-link" href="#"><div class="card-img">🌰</div><div class="card-body"><h3>Budín de Nuez</h3><span class="price">$9.500</span></div></a><div class="card-footer"><button class="add-btn" data-nombre="Budín de Nuez" data-precio="9500" data-emoji="🌰" onclick="agregarAlCarrito(this)">🛍 Agregar al Carrito</button></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="cat-section">
+  <div class="wrap">
+    <div class="cat-heading">
+      <div class="cat-heading-left">
+        <div class="emoji-badge">🧈</div>
+        <h2>Cajas de Cuadraditos</h2>
+      </div>
+      <span class="count">3 productos</span>
+    </div>
+    <div class="grid">
+      <div class="card"><a class="card-link" href="#"><div class="card-img">🧡</div><div class="card-body"><h3>Caja Mixta x12</h3><span class="price">$14.000</span></div></a><div class="card-footer"><button class="add-btn" data-nombre="Caja Mixta x12" data-precio="14000" data-emoji="🧡" onclick="agregarAlCarrito(this)">🛍 Agregar al Carrito</button></div></div>
+      <div class="card"><a class="card-link" href="#"><div class="card-img">🍯</div><div class="card-body"><h3>Caja Dulce de Leche x12</h3><span class="price">$14.500</span></div></a><div class="card-footer"><button class="add-btn" data-nombre="Caja Dulce de Leche x12" data-precio="14500" data-emoji="🍯" onclick="agregarAlCarrito(this)">🛍 Agregar al Carrito</button></div></div>
+      <div class="card"><a class="card-link" href="#"><div class="card-img">🌰</div><div class="card-body"><h3>Caja Nuez x12</h3><span class="price">$15.000</span></div></a><div class="card-footer"><button class="add-btn" data-nombre="Caja Nuez x12" data-precio="15000" data-emoji="🌰" onclick="agregarAlCarrito(this)">🛍 Agregar al Carrito</button></div></div>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div>
+      <div class="logo"><span>Caramel</span></div>
+      <p style="margin-top:14px;max-width:32ch;">Pastelería artesanal que endulza tus momentos especiales con creaciones únicas y deliciosas.</p>
+    </div>
+    <div>
+      <h4>Enlaces</h4>
+      <ul><li><a href="#">Inicio</a></li><li><a href="#">Productos</a></li><li><a href="#">Nosotras</a></li><li><a href="#">Contacto</a></li></ul>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul><li><a href="#">Buenos Aires, Argentina</a></li><li><a href="#">+54 9 11 0000 0000</a></li><li><a href="#">hola@caramel.com.ar</a></li></ul>
+    </div>
+  </div>
+  <div class="bottom">© 2026 Caramel · Pura dulzura. Todos los derechos reservados.</div>
+</footer>
+
+
+<div class="overlay" id="overlay" onclick="toggleCarrito(false)"></div>
+<aside class="drawer" id="drawer">
+  <div class="drawer-head">
+    <h2>Tu pedido</h2>
+    <button class="drawer-close" onclick="toggleCarrito(false)">✕</button>
+  </div>
+  <div class="drawer-items" id="drawerItems">
+    <p class="drawer-empty">Todavía no agregaste nada.<br>Elegí algo rico del catálogo 🍰</p>
+  </div>
+  <div class="drawer-foot">
+    <div class="drawer-total"><span>Total</span><span id="drawerTotal">$0</span></div>
+    <a class="whatsapp-btn" id="whatsappBtn" href="#" target="_blank">💬 Finalizar pedido por WhatsApp</a>
+  </div>
+</aside>
+
+<script>
+let carrito = [];
+const NUMERO_WHATSAPP = "5491100000000";
+
+function toggleCarrito(abrir){
+  document.getElementById('overlay').classList.toggle('open', abrir);
+  document.getElementById('drawer').classList.toggle('open', abrir);
+}
+
+function agregarAlCarrito(btn){
+  const nombre = btn.dataset.nombre;
+  const precio = parseInt(btn.dataset.precio, 10);
+  const emoji = btn.dataset.emoji;
+  const existente = carrito.find(i => i.nombre === nombre);
+  if(existente){ existente.cantidad++; }
+  else { carrito.push({nombre, precio, emoji, cantidad:1}); }
+  render();
+  toggleCarrito(true);
+}
+
+function cambiarCantidad(nombre, delta){
+  const item = carrito.find(i => i.nombre === nombre);
+  if(!item) return;
+  item.cantidad += delta;
+  if(item.cantidad <= 0){ carrito = carrito.filter(i => i.nombre !== nombre); }
+  render();
+}
+
+function quitarItem(nombre){
+  carrito = carrito.filter(i => i.nombre !== nombre);
+  render();
+}
+
+function formatoARS(n){
+  return "$" + n.toLocaleString('es-AR');
+}
+
+function render(){
+  const cont = document.getElementById('drawerItems');
+  const totalItems = carrito.reduce((s,i)=>s+i.cantidad,0);
+  document.getElementById('cartCount').textContent = totalItems;
+
+  if(carrito.length === 0){
+    cont.innerHTML = '<p class="drawer-empty">Todavía no agregaste nada.<br>Elegí algo rico del catálogo 🍰</p>';
+  } else {
+    cont.innerHTML = carrito.map(item => `
+      <div class="drawer-item">
+        <div class="di-img">${item.emoji}</div>
+        <div class="di-info">
+          <h4>${item.nombre}</h4>
+          <span class="di-price">${formatoARS(item.precio * item.cantidad)}</span>
+        </div>
+        <div class="di-qty">
+          <button onclick="cambiarCantidad('${item.nombre}', -1)">−</button>
+          <span>${item.cantidad}</span>
+          <button onclick="cambiarCantidad('${item.nombre}', 1)">+</button>
+        </div>
+        <button class="di-remove" onclick="quitarItem('${item.nombre}')" title="Quitar">🗑</button>
+      </div>
+    `).join('');
+  }
+
+  const total = carrito.reduce((s,i)=>s+i.precio*i.cantidad, 0);
+  document.getElementById('drawerTotal').textContent = formatoARS(total);
+
+  const whatsappBtn = document.getElementById('whatsappBtn');
+  if(carrito.length === 0){
+    whatsappBtn.setAttribute('disabled','disabled');
+    whatsappBtn.href = "#";
+  } else {
+    whatsappBtn.removeAttribute('disabled');
+    const lineas = carrito.map(i => `- ${i.nombre} x${i.cantidad} — ${formatoARS(i.precio*i.cantidad)}`).join('\n');
+    const mensaje = `Hola! Quiero hacer este pedido:\n\n${lineas}\n\nTotal: ${formatoARS(total)}\n\nNombre:\nFecha de entrega deseada:`;
+    whatsappBtn.href = `https://wa.me/${NUMERO_WHATSAPP}?text=${encodeURIComponent(mensaje)}`;
+  }
+}
+
+render();
+</script>
+
+</body>
+</html>

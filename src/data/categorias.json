@@ -1,0 +1,6 @@
+[
+  { "id": 1, "nombre": "Tortas", "slug": "tortas" },
+  { "id": 2, "nombre": "Budines", "slug": "budines" },
+  { "id": 3, "nombre": "Boxes Dulces", "slug": "boxes-dulces" },
+  { "id": 4, "nombre": "Tartas", "slug": "tartas" }
+]

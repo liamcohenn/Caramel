@@ -1,0 +1,31 @@
+[
+  { "id": 1, "nombre": "Torta Balcarce", "descripcion": "Bizcochuelo de vainilla relleno de crema merengue y dulce de leche con nueces.", "precio": 40000, "categoriaId": 1, "fotos": [] },
+  { "id": 2, "nombre": "Torta DDL y Chocolate", "descripcion": "Bizcochuelo de chocolate relleno de dulce de leche, bañado en chocolate.", "precio": 38000, "categoriaId": 1, "fotos": [] },
+  { "id": 3, "nombre": "Torta con Crema y Merengues", "descripcion": "", "precio": 38000, "categoriaId": 1, "fotos": [] },
+  { "id": 4, "nombre": "Torta Brownie con Merengue", "descripcion": "Base de brownie con cubierta de dulce de leche y merengue italiano.", "precio": 35000, "categoriaId": 1, "fotos": [] },
+  { "id": 5, "nombre": "Marquise de Chocolate", "descripcion": "Base de torta de chocolate súper húmeda, cubierta de dulce de leche y merengue.", "precio": 35000, "categoriaId": 1, "fotos": [] },
+  { "id": 6, "nombre": "Torta Invertida de Manzanas", "descripcion": "Base de torta de vainilla cubierta con manzanas acarameladas.", "precio": 27000, "categoriaId": 1, "fotos": [] },
+  { "id": 7, "nombre": "Torta Brownie con Crema", "descripcion": "Torta brownie cubierta de dulce de leche y crema chantilly.", "precio": 34000, "categoriaId": 1, "fotos": [] },
+  { "id": 8, "nombre": "Chocotorta", "descripcion": "Torta de galletas de chocolate con crema de queso crema y dulce de leche.", "precio": 35000, "categoriaId": 1, "fotos": [] },
+
+  { "id": 9, "nombre": "Budín de Mandarinas", "descripcion": "", "precio": 20000, "categoriaId": 2, "fotos": [] },
+  { "id": 10, "nombre": "Budín Marmolado", "descripcion": "", "precio": 20000, "categoriaId": 2, "fotos": [] },
+  { "id": 11, "nombre": "Budín de Zanahorias", "descripcion": "", "precio": 20000, "categoriaId": 2, "fotos": [] },
+
+  { "id": 12, "nombre": "Blondies de Chocolate Blanco y Frutos Rojos", "descripcion": "", "precio": 24000, "categoriaId": 3, "unidades": 16, "fotos": [] },
+  { "id": 13, "nombre": "Cuadrados de Nutella", "descripcion": "", "precio": 24000, "categoriaId": 3, "unidades": 16, "fotos": [] },
+  { "id": 14, "nombre": "Cuadrados de Coco con DDL", "descripcion": "Base de tarta con relleno de dulce de leche, cubierto de un crumble de coco.", "precio": 24000, "categoriaId": 3, "unidades": 16, "fotos": [] },
+  { "id": 15, "nombre": "Red Velvet Brownie", "descripcion": "Brownies con cobertura de cheesecake.", "precio": 24000, "categoriaId": 3, "unidades": 16, "fotos": [] },
+  { "id": 16, "nombre": "Lemons", "descripcion": "Cuadrados húmedos de limón con cubierta de glasé.", "precio": 24000, "categoriaId": 3, "unidades": 16, "fotos": [] },
+  { "id": 17, "nombre": "Brownies", "descripcion": "", "precio": 24000, "categoriaId": 3, "unidades": 16, "fotos": [] },
+  { "id": 18, "nombre": "Maní con Chocolate", "descripcion": "", "precio": 24000, "categoriaId": 3, "unidades": 16, "fotos": [] },
+  { "id": 19, "nombre": "Merengue y Nuez", "descripcion": "Cuadrados con base de vainilla, relleno de dulce de duraznos y cubierta crocante de merengue y nueces.", "precio": 24000, "categoriaId": 3, "unidades": 16, "fotos": [] },
+  { "id": 20, "nombre": "Mamul", "descripcion": "Masitas rellenas de nueces o membrillo.", "precio": 20000, "categoriaId": 3, "unidades": 16, "fotos": [] },
+  { "id": 21, "nombre": "Trufas de Chocolate y Bombones de Cereal con Chocolate", "descripcion": "Caja con 10 trufas de chocolate y 10 bombones de cereal con chocolate.", "precio": 20000, "categoriaId": 3, "unidades": 20, "fotos": [] },
+
+  { "id": 22, "nombre": "Tarta de Ricota", "descripcion": "Tarta rellena de ricota.", "precio": 25000, "categoriaId": 4, "fotos": [] },
+  { "id": 23, "nombre": "Pastafrola", "descripcion": "Tarta rellena de dulce de membrillo o dulce de batata.", "precio": 25000, "categoriaId": 4, "fotos": [] },
+  { "id": 24, "nombre": "Tarta de Banana con DDL y Crema", "descripcion": "Base de tarta rellena de dulce de leche y banana, cubierta con crema chantilly.", "precio": 34000, "categoriaId": 4, "fotos": [] },
+  { "id": 25, "nombre": "Lemon Pie", "descripcion": "Tarta con relleno de crema de limón y cubierta de merengue italiano.", "precio": 32000, "categoriaId": 4, "fotos": [] },
+  { "id": 26, "nombre": "Tarta de Yogurt y Frutos Rojos", "descripcion": "Base de vainilla y relleno cremoso de yogurt y leche condensada, con cubierta de frutos rojos.", "precio": 35000, "categoriaId": 4, "fotos": [] }
+]
