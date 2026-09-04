@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caramel — Pedidos Especiales</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFDF7; --white:#FFFFFF; --magenta:#B54784; --magenta-dark:#96366A;
+    --amber:#F5C46C; --amber-soft:#FAD9A0; --cream:#FBE9C6; --ink:#5B3B4F; --ink-soft:#A98CA0;
+  }
+  [data-theme="dark"]{ --bg:#2B1F27; --white:#352832; --ink:#F6ECEF; --ink-soft:#C9B7C1; --cream:#4A3540; }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Quicksand',sans-serif;-webkit-font-smoothing:antialiased;}
+  img,svg{max-width:100%;}
+  .wrap{max-width:1120px;margin:0 auto;padding:0 32px;}
+
+  /* NAV */
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1120px;margin:0 auto;}
+  .logo span{font-family:'Pacifico',cursive;font-size:1.5rem;color:var(--magenta);}
+  .navlinks{display:flex;gap:36px;list-style:none;margin:0;padding:0;}
+  .navlinks a{color:var(--ink);text-decoration:none;font-weight:600;font-size:0.95rem;position:relative;}
+  .navlinks a.active{color:var(--magenta);}
+  .navlinks a.active::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:3px;background:var(--amber);border-radius:2px;}
+  .cart{display:flex;align-items:center;gap:6px;color:var(--magenta);font-weight:700;background:none;border:none;font-family:inherit;font-size:1rem;}
+
+  /* HERO */
+  .hero{padding:36px 32px 56px;}
+  .hero-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.05fr 0.95fr;gap:48px;align-items:center;}
+  .hero h1{font-size:2.6rem;line-height:1.12;margin:0 0 18px;color:var(--ink);}
+  .hero h1 em{font-family:'Pacifico',cursive;font-style:normal;color:var(--magenta);display:block;font-size:1.15em;margin-top:2px;}
+  .hero p{color:var(--ink-soft);line-height:1.65;font-size:1.02rem;margin-bottom:28px;max-width:46ch;}
+  .cta{display:inline-flex;align-items:center;gap:10px;background:var(--magenta);color:#fff;text-decoration:none;padding:15px 30px;border-radius:999px;font-weight:700;font-size:1rem;box-shadow:0 10px 24px rgba(181,71,132,.25);}
+  .cta:hover{background:var(--magenta-dark);}
+  .hero-photo{aspect-ratio:1;border-radius:24px;background:repeating-linear-gradient(135deg, var(--cream), var(--cream) 18px, var(--amber-soft) 18px, var(--amber-soft) 36px);border:2px dashed var(--magenta);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:12px;}
+  .hero-photo svg{width:44px;height:44px;}
+  .hero-photo span{color:var(--magenta-dark);font-weight:700;font-size:.85rem;background:rgba(255,255,255,.75);padding:6px 14px;border-radius:999px;}
+
+  /* SECTION HEADS */
+  .section-head{max-width:560px;margin-bottom:36px;}
+  .eyebrow-line{width:44px;height:3px;background:var(--amber);border-radius:2px;margin-bottom:16px;}
+  .section-head h2{font-size:1.7rem;margin:0 0 10px;color:var(--ink);}
+  .section-head p{color:var(--ink-soft);margin:0;line-height:1.55;}
+
+  /* TIPOS DE EVENTO */
+  .tipos{background:var(--white);padding:70px 32px;}
+  .tipos-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:24px;}
+  .tipo-card{background:var(--bg);border-radius:20px;padding:28px 26px;}
+  .tipo-card .icon{width:50px;height:50px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:1.4rem;margin-bottom:18px;}
+  .tipo-card h3{margin:0 0 10px;font-size:1.1rem;color:var(--ink);}
+  .tipo-card p{margin:0;color:var(--ink-soft);font-size:.9rem;line-height:1.55;}
+
+  /* GALERIA EJEMPLOS */
+  .galeria{background:var(--cream);padding:70px 32px;}
+  .galeria-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+  .galeria-item{aspect-ratio:1;border-radius:16px;background:linear-gradient(150deg,var(--white),var(--amber-soft));display:flex;align-items:center;justify-content:center;font-size:2rem;}
+
+  /* COMO FUNCIONA */
+  .pasos{background:var(--bg);padding:70px 32px;}
+  .pasos-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:24px;position:relative;}
+  .paso{background:var(--white);border-radius:18px;padding:26px 22px;position:relative;}
+  .paso-num{width:36px;height:36px;border-radius:50%;background:var(--magenta);color:#fff;display:flex;align-items:center;justify-content:center;font-weight:700;font-size:1rem;margin-bottom:16px;}
+  .paso h3{margin:0 0 8px;font-size:1rem;color:var(--ink);}
+  .paso p{margin:0;color:var(--ink-soft);font-size:.85rem;line-height:1.5;}
+  @media (min-width:861px){
+    .paso:not(:last-child)::after{content:"→";position:absolute;top:50%;right:-24px;transform:translateY(-50%);color:var(--magenta);font-size:1.2rem;font-weight:700;}
+  }
+
+  /* CTA FINAL */
+  .cta-final{background:var(--magenta);padding:70px 32px;text-align:center;color:#fff;}
+  .cta-final h2{font-size:1.9rem;margin:0 0 14px;}
+  .cta-final p{color:#E9C9DC;margin:0 0 30px;max-width:52ch;margin-left:auto;margin-right:auto;line-height:1.55;}
+  .cta-final a{display:inline-flex;align-items:center;gap:10px;background:var(--amber);color:var(--magenta-dark);text-decoration:none;padding:16px 32px;border-radius:999px;font-weight:700;font-size:1.02rem;}
+  .cta-final a:hover{background:var(--amber-soft);}
+  .cta-final .nota{margin-top:18px;font-size:.85rem;color:#E0AFCB;}
+
+  /* FOOTER */
+  footer{background:var(--ink);color:var(--cream);padding:56px 32px 28px;}
+  .foot-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;}
+  .foot-inner .logo span{color:var(--amber);}
+  footer p{color:#C9B7C1;font-size:.92rem;line-height:1.6;}
+  footer h4{font-size:.95rem;margin:0 0 14px;color:#fff;}
+  footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  footer a{color:#C9B7C1;text-decoration:none;font-size:.92rem;}
+  footer a:hover{color:var(--amber);}
+  .bottom{max-width:1120px;margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);color:#8A7A83;font-size:.82rem;text-align:center;}
+
+  @media (max-width:860px){
+    .hero-inner{grid-template-columns:1fr;gap:28px;}
+    .tipos-grid{grid-template-columns:1fr;}
+    .galeria-grid{grid-template-columns:repeat(2,1fr);}
+    .pasos-grid{grid-template-columns:1fr;}
+    .foot-inner{grid-template-columns:1fr;gap:28px;}
+    .navlinks{display:none;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><span>Caramel</span></div>
+  <ul class="navlinks">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Productos</a></li>
+    <li><a href="#" class="active">Pedidos Especiales</a></li>
+    <li><a href="#">Preguntas Frecuentes</a></li>
+  </ul>
+  <button class="cart">🛒 <span>0</span></button>
+</nav>
+
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <h1>Para ese día<em>que es único</em></h1>
+      <p>Cumpleaños, casamientos, mesas dulces, eventos de empresa. Armamos tu pedido a medida: tamaño, sabores y diseño pensados para tu ocasión.</p>
+      <a class="cta" href="#">💬 Contanos tu idea por WhatsApp</a>
+    </div>
+    <div class="hero-photo">
+      <svg viewBox="0 0 24 24" fill="none" stroke="#B54784" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"><path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z"/><circle cx="12" cy="13" r="4"/></svg>
+      <span>Foto de una mesa dulce acá</span>
+    </div>
+  </div>
+</section>
+
+<section class="tipos">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow-line"></div>
+      <h2>¿Para qué ocasión?</h2>
+      <p>Algunos de los eventos para los que más nos piden.</p>
+    </div>
+    <div class="tipos-grid">
+      <div class="tipo-card">
+        <div class="icon">🎂</div>
+        <h3>Cumpleaños</h3>
+        <p>Tortas temáticas, mesas dulces completas o combos de cajas para compartir con los invitados.</p>
+      </div>
+      <div class="tipo-card">
+        <div class="icon">💍</div>
+        <h3>Casamientos y 15</h3>
+        <p>Candy bar, mesa de postres o torta principal, coordinado con tiempo para que salga como lo imaginás.</p>
+      </div>
+      <div class="tipo-card">
+        <div class="icon">🏢</div>
+        <h3>Eventos corporativos</h3>
+        <p>Cajas individuales o mesas dulces para reuniones, lanzamientos y fin de año de empresa.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="galeria">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow-line"></div>
+      <h2>Algunos trabajos anteriores</h2>
+      <p>Una idea de lo que ya armamos para otros eventos.</p>
+    </div>
+    <div class="galeria-grid">
+      <div class="galeria-item">🎂</div>
+      <div class="galeria-item">🧁</div>
+      <div class="galeria-item">🍰</div>
+      <div class="galeria-item">🍬</div>
+    </div>
+  </div>
+</section>
+
+<section class="pasos">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow-line"></div>
+      <h2>Cómo coordinamos tu pedido</h2>
+    </div>
+    <div class="pasos-grid">
+      <div class="paso">
+        <div class="paso-num">1</div>
+        <h3>Nos contás tu idea</h3>
+        <p>Fecha, cantidad de invitados y qué tenías en mente.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">2</div>
+        <h3>Te armamos una propuesta</h3>
+        <p>Sabores, diseño y presupuesto a medida.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">3</div>
+        <h3>Confirmás con una seña</h3>
+        <p>Reservamos tu fecha en nuestra agenda de producción.</p>
+      </div>
+      <div class="paso">
+        <div class="paso-num">4</div>
+        <h3>Entrega el día del evento</h3>
+        <p>Retiro o envío coordinado, listo para tu celebración.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="cta-final">
+  <h2>Cada evento merece algo hecho a medida</h2>
+  <p>Contanos qué estás celebrando y armamos juntas la propuesta — sin compromiso.</p>
+  <a href="#">💬 Empezar por WhatsApp</a>
+  <div class="nota">Recomendamos coordinar con al menos 2 semanas de anticipación para eventos grandes.</div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div>
+      <div class="logo"><span>Caramel</span></div>
+      <p style="margin-top:14px;max-width:32ch;">Pastelería artesanal que endulza tus momentos especiales con creaciones únicas y deliciosas.</p>
+    </div>
+    <div>
+      <h4>Enlaces</h4>
+      <ul><li><a href="#">Inicio</a></li><li><a href="#">Productos</a></li><li><a href="#">Pedidos Especiales</a></li><li><a href="#">Preguntas Frecuentes</a></li></ul>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul><li><a href="#">Buenos Aires, Argentina</a></li><li><a href="#">+54 9 11 0000 0000</a></li><li><a href="#">hola@caramel.com.ar</a></li></ul>
+    </div>
+  </div>
+  <div class="bottom">© 2026 Caramel · Pura dulzura. Todos los derechos reservados.</div>
+</footer>
+
+</body>
+</html>

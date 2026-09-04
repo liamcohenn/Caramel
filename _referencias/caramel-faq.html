@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Caramel — Preguntas Frecuentes</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Pacifico&family=Quicksand:wght@500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#FFFDF7; --white:#FFFFFF; --magenta:#B54784; --magenta-dark:#96366A;
+    --amber:#F5C46C; --amber-soft:#FAD9A0; --cream:#FBE9C6; --ink:#5B3B4F; --ink-soft:#A98CA0;
+  }
+  [data-theme="dark"]{ --bg:#2B1F27; --white:#352832; --ink:#F6ECEF; --ink-soft:#C9B7C1; --cream:#4A3540; }
+  *{box-sizing:border-box;}
+  body{margin:0;background:var(--bg);color:var(--ink);font-family:'Quicksand',sans-serif;-webkit-font-smoothing:antialiased;}
+  img,svg{max-width:100%;}
+  .wrap{max-width:840px;margin:0 auto;padding:0 32px;}
+
+  /* NAV */
+  nav{display:flex;align-items:center;justify-content:space-between;padding:18px 32px;max-width:1120px;margin:0 auto;}
+  .logo span{font-family:'Pacifico',cursive;font-size:1.5rem;color:var(--magenta);}
+  .navlinks{display:flex;gap:36px;list-style:none;margin:0;padding:0;}
+  .navlinks a{color:var(--ink);text-decoration:none;font-weight:600;font-size:0.95rem;position:relative;}
+  .navlinks a.active{color:var(--magenta);}
+  .navlinks a.active::after{content:"";position:absolute;left:0;right:0;bottom:-6px;height:3px;background:var(--amber);border-radius:2px;}
+  .cart{display:flex;align-items:center;gap:6px;color:var(--magenta);font-weight:700;background:none;border:none;font-family:inherit;font-size:1rem;}
+
+  /* PAGE HEADER */
+  .page-header{padding:36px 32px 8px;text-align:center;}
+  .page-header h1{font-size:2.2rem;margin:0 0 12px;color:var(--ink);}
+  .page-header h1 em{font-family:'Pacifico',cursive;font-style:normal;color:var(--magenta);}
+  .page-header p{color:var(--ink-soft);max-width:48ch;margin:0 auto;line-height:1.55;}
+
+  /* FAQ */
+  .faq-section{padding:40px 32px 90px;}
+  .faq-group{margin-bottom:40px;}
+  .faq-group-title{display:flex;align-items:center;gap:12px;margin-bottom:18px;}
+  .faq-group-title .icon{width:36px;height:36px;border-radius:50%;background:var(--cream);display:flex;align-items:center;justify-content:center;font-size:1.05rem;flex-shrink:0;}
+  .faq-group-title h2{font-size:1.15rem;margin:0;color:var(--magenta-dark);}
+
+  details.faq-item{background:var(--white);border-radius:16px;margin-bottom:12px;overflow:hidden;border:1px solid var(--cream);}
+  details.faq-item summary{list-style:none;cursor:pointer;padding:18px 22px;display:flex;align-items:center;justify-content:space-between;gap:16px;font-weight:700;color:var(--ink);font-size:.98rem;}
+  details.faq-item summary::-webkit-details-marker{display:none;}
+  details.faq-item summary::after{content:"+";font-size:1.4rem;color:var(--magenta);font-weight:400;flex-shrink:0;transition:transform .2s ease;line-height:1;}
+  details.faq-item[open] summary::after{content:"−";}
+  details.faq-item .faq-answer{padding:0 22px 20px;color:var(--ink-soft);line-height:1.6;font-size:.92rem;}
+
+  .faq-cta{margin-top:10px;background:var(--cream);border-radius:18px;padding:30px 28px;text-align:center;}
+  .faq-cta p{margin:0 0 16px;color:var(--magenta-dark);font-weight:600;font-size:.98rem;}
+  .faq-cta a{display:inline-flex;align-items:center;gap:8px;background:var(--magenta);color:#fff;text-decoration:none;padding:13px 26px;border-radius:999px;font-weight:700;font-size:.92rem;}
+  .faq-cta a:hover{background:var(--magenta-dark);}
+
+  /* FOOTER */
+  footer{background:var(--magenta);color:#fff;padding:56px 32px 28px;}
+  .foot-inner{max-width:1120px;margin:0 auto;display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:40px;}
+  .foot-inner .logo span{color:#fff;font-size:1.7rem;}
+  footer p{color:#F0D3E4;font-size:.92rem;line-height:1.6;}
+  footer h4{font-size:.95rem;margin:0 0 14px;color:#fff;}
+  footer ul{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:10px;}
+  footer a{color:#F0D3E4;text-decoration:none;font-size:.92rem;}
+  footer a:hover{color:var(--amber);}
+  .bottom{max-width:1120px;margin:40px auto 0;padding-top:24px;border-top:1px solid rgba(255,255,255,.18);color:#E0AFCB;font-size:.82rem;text-align:center;}
+
+  @media (max-width:860px){
+    .navlinks{display:none;}
+    .page-header h1{font-size:1.8rem;}
+    .foot-inner{grid-template-columns:1fr;gap:28px;}
+  }
+</style>
+</head>
+<body>
+
+<nav>
+  <div class="logo"><span>Caramel</span></div>
+  <ul class="navlinks">
+    <li><a href="#">Inicio</a></li>
+    <li><a href="#">Productos</a></li>
+    <li><a href="#">Nosotras</a></li>
+    <li><a href="#" class="active">Preguntas Frecuentes</a></li>
+  </ul>
+  <button class="cart">🛒 <span>0</span></button>
+</nav>
+
+<div class="page-header">
+  <div class="wrap">
+    <h1>Preguntas <em>frecuentes</em></h1>
+    <p>Todo lo que necesitás saber antes de pedir. Si no encontrás tu duda acá, escribinos directo por WhatsApp.</p>
+  </div>
+</div>
+
+<section class="faq-section">
+  <div class="wrap">
+
+    <div class="faq-group">
+      <div class="faq-group-title"><div class="icon">📅</div><h2>Pedidos y anticipación</h2></div>
+      <details class="faq-item" open>
+        <summary>¿Con cuánto tiempo tengo que pedir?</summary>
+        <div class="faq-answer">Con 48hs de anticipación como mínimo. Para tortas personalizadas o pedidos grandes (eventos, cumpleaños), recomendamos coordinar con al menos 5 días de anticipación.</div>
+      </details>
+      <details class="faq-item">
+        <summary>¿Puedo hacer una torta personalizada?</summary>
+        <div class="faq-answer">Sí. Agregá cualquier torta al carrito y coordinamos tamaño, sabor y mensaje directo por WhatsApp al finalizar el pedido.</div>
+      </details>
+      <details class="faq-item">
+        <summary>¿Puedo cancelar o cambiar la fecha de mi pedido?</summary>
+        <div class="faq-answer">Sí, siempre que nos avises con al menos 24hs de anticipación a la fecha acordada. Escribinos por WhatsApp y lo resolvemos.</div>
+      </details>
+    </div>
+
+    <div class="faq-group">
+      <div class="faq-group-title"><div class="icon">🚚</div><h2>Entrega y retiro</h2></div>
+      <details class="faq-item">
+        <summary>¿Hacen envíos?</summary>
+        <div class="faq-answer">Sí, entregamos en toda CABA. El costo de envío varía según la zona y te lo confirmamos al coordinar el pedido por WhatsApp.</div>
+      </details>
+      <details class="faq-item">
+        <summary>¿Puedo retirar mi pedido?</summary>
+        <div class="faq-answer">Sí, tenés la opción de retiro sin cargo. Te pasamos la dirección y el horario disponible al coordinar.</div>
+      </details>
+    </div>
+
+    <div class="faq-group">
+      <div class="faq-group-title"><div class="icon">💳</div><h2>Pagos</h2></div>
+      <details class="faq-item">
+        <summary>¿Qué medios de pago aceptan?</summary>
+        <div class="faq-answer">Mercado Pago y transferencia bancaria. Te pasamos los datos una vez confirmado el pedido por WhatsApp.</div>
+      </details>
+      <details class="faq-item">
+        <summary>¿Necesito pagar por adelantado?</summary>
+        <div class="faq-answer">Para pedidos grandes o tortas personalizadas pedimos una seña del 50%. Para productos de stock, se paga al confirmar o al recibir.</div>
+      </details>
+    </div>
+
+    <div class="faq-group">
+      <div class="faq-group-title"><div class="icon">🍰</div><h2>Sobre los productos</h2></div>
+      <details class="faq-item">
+        <summary>¿Cuánto duran los productos?</summary>
+        <div class="faq-answer">Todo se hornea fresco el día del pedido. Las tortas se conservan 3-4 días en heladera; budines y cuadraditos, hasta una semana bien cerrados.</div>
+      </details>
+      <details class="faq-item">
+        <summary>¿Tienen opciones sin TACC?</summary>
+        <div class="faq-answer">Por el momento no elaboramos productos sin TACC. Estamos evaluando sumar opciones — seguinos en Instagram para novedades.</div>
+      </details>
+    </div>
+
+    <div class="faq-cta">
+      <p>¿Tenés otra duda? Escribinos y te respondemos al toque.</p>
+      <a href="#">💬 Escribir por WhatsApp</a>
+    </div>
+
+  </div>
+</section>
+
+<footer>
+  <div class="foot-inner">
+    <div>
+      <div class="logo"><span>Caramel</span></div>
+      <p style="margin-top:14px;max-width:32ch;">Pastelería artesanal que endulza tus momentos especiales con creaciones únicas y deliciosas.</p>
+    </div>
+    <div>
+      <h4>Enlaces</h4>
+      <ul><li><a href="#">Inicio</a></li><li><a href="#">Productos</a></li><li><a href="#">Nosotras</a></li><li><a href="#">Preguntas Frecuentes</a></li></ul>
+    </div>
+    <div>
+      <h4>Contacto</h4>
+      <ul><li><a href="#">Buenos Aires, Argentina</a></li><li><a href="#">+54 9 11 0000 0000</a></li><li><a href="#">hola@caramel.com.ar</a></li></ul>
+    </div>
+  </div>
+  <div class="bottom">© 2026 Caramel · Pura dulzura. Todos los derechos reservados.</div>
+</footer>
+
+</body>
+</html>
