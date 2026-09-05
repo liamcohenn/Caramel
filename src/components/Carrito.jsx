@@ -1,3 +1,4 @@
+import { Link } from 'react-router-dom'
 import { useCarrito } from '../context/CarritoContext'
 import { armarLinkWhatsapp } from '../utils/whatsapp'
 
@@ -84,6 +85,9 @@ function Carrito() {
             <span>Total</span>
             <span>${total.toLocaleString('es-AR')}</span>
           </div>
+          <Link to="/preguntas-frecuentes" className="drawer-faq-link" onClick={cerrarCarrito}>
+            ¿Dudas antes de pedir? Ver preguntas frecuentes →
+          </Link>
           <a
             className={`whatsapp-btn${carritoVacio ? ' disabled' : ''}`}
             href={carritoVacio ? undefined : armarLinkWhatsapp(carrito, NUMERO_WHATSAPP)}

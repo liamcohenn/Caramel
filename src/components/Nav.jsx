@@ -20,13 +20,11 @@ function Nav() {
           </NavLink>
         </li>
         <li>
-          <NavLink to="/nosotras" className={({ isActive }) => (isActive ? 'active' : undefined)}>
-            Nosotras
-          </NavLink>
-        </li>
-        <li>
-          <NavLink to="/contacto" className={({ isActive }) => (isActive ? 'active' : undefined)}>
-            Contacto
+          <NavLink
+            to="/pedidos-especiales"
+            className={({ isActive }) => (isActive ? 'active' : undefined)}
+          >
+            Pedidos Especiales
           </NavLink>
         </li>
       </ul>

@@ -7,8 +7,8 @@ import Carrito from './components/Carrito'
 import Home from './pages/Home'
 import Productos from './pages/Productos'
 import ProductoDetalle from './pages/ProductoDetalle'
-import Nosotras from './pages/Nosotras'
-import Contacto from './pages/Contacto'
+import PreguntasFrecuentes from './pages/PreguntasFrecuentes'
+import PedidosEspeciales from './pages/PedidosEspeciales'
 
 function AppRoutes() {
   const location = useLocation()
@@ -24,8 +24,8 @@ function AppRoutes() {
         <Route path="/" element={<Home />} />
         <Route path="/productos" element={<Productos />} />
         <Route path="/productos/:id" element={<ProductoDetalle />} />
-        <Route path="/nosotras" element={<Nosotras />} />
-        <Route path="/contacto" element={<Contacto />} />
+        <Route path="/preguntas-frecuentes" element={<PreguntasFrecuentes />} />
+        <Route path="/pedidos-especiales" element={<PedidosEspeciales />} />
       </Routes>
       <Footer />
       <Carrito />

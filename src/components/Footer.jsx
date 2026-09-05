@@ -17,8 +17,8 @@ function Footer() {
           <ul>
             <li><Link to="/">Inicio</Link></li>
             <li><Link to="/productos">Productos</Link></li>
-            <li><Link to="/nosotras">Nosotras</Link></li>
-            <li><Link to="/contacto">Contacto</Link></li>
+            <li><Link to="/pedidos-especiales">Pedidos Especiales</Link></li>
+            <li><Link to="/preguntas-frecuentes">Preguntas Frecuentes</Link></li>
           </ul>
         </div>
         <div>
