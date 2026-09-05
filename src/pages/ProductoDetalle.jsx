@@ -65,7 +65,7 @@ function ProductoEncontrado({ producto }) {
 
       <section className="detalle">
         <div className="detalle-inner">
-          <div className="galeria">
+          <div className="producto-galeria">
             <div className="galeria-main">
               {fotos && fotos[fotoActiva] && (
                 <img

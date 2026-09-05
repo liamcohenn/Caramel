@@ -1,11 +1,11 @@
 [
-  { "id": 1, "nombre": "Torta Balcarce", "descripcion": "Bizcochuelo de vainilla relleno de crema merengue y dulce de leche con nueces.", "precio": 40000, "categoriaId": 1, "fotos": [] },
+  { "id": 1, "nombre": "Torta Balcarce", "descripcion": "Bizcochuelo de vainilla relleno de crema merengue y dulce de leche con nueces.", "precio": 40000, "categoriaId": 1, "fotos": ["/images/productos/torta-balcarce.jpg"] },
   { "id": 2, "nombre": "Torta DDL y Chocolate", "descripcion": "Bizcochuelo de chocolate relleno de dulce de leche, bañado en chocolate.", "precio": 38000, "categoriaId": 1, "fotos": [] },
   { "id": 3, "nombre": "Torta con Crema y Merengues", "descripcion": "", "precio": 38000, "categoriaId": 1, "fotos": [] },
   { "id": 4, "nombre": "Torta Brownie con Merengue", "descripcion": "Base de brownie con cubierta de dulce de leche y merengue italiano.", "precio": 35000, "categoriaId": 1, "fotos": [] },
   { "id": 5, "nombre": "Marquise de Chocolate", "descripcion": "Base de torta de chocolate súper húmeda, cubierta de dulce de leche y merengue.", "precio": 35000, "categoriaId": 1, "fotos": [] },
   { "id": 6, "nombre": "Torta Invertida de Manzanas", "descripcion": "Base de torta de vainilla cubierta con manzanas acarameladas.", "precio": 27000, "categoriaId": 1, "fotos": [] },
-  { "id": 7, "nombre": "Torta Brownie con Crema", "descripcion": "Torta brownie cubierta de dulce de leche y crema chantilly.", "precio": 34000, "categoriaId": 1, "fotos": [] },
+  { "id": 7, "nombre": "Torta Brownie con Crema", "descripcion": "Torta brownie cubierta de dulce de leche y crema chantilly.", "precio": 34000, "categoriaId": 1, "fotos": ["/images/productos/brownie-crema.jpg"] },
   { "id": 8, "nombre": "Chocotorta", "descripcion": "Torta de galletas de chocolate con crema de queso crema y dulce de leche.", "precio": 35000, "categoriaId": 1, "fotos": [] },
 
   { "id": 9, "nombre": "Budín de Mandarinas", "descripcion": "", "precio": 20000, "categoriaId": 2, "fotos": [] },

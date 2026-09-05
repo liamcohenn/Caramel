@@ -25,7 +25,7 @@ function Footer() {
           <h4>Contacto</h4>
           <ul>
             <li><a href="#">Buenos Aires, Argentina</a></li>
-            <li><a href="#">+54 9 11 0000 0000</a></li>
+            <li><a href="#">+54 9 11 5248 2293</a></li>
             <li><a href="#">hola@caramel.com.ar</a></li>
           </ul>
         </div>
