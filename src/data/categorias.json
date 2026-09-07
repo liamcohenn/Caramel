@@ -1,6 +1,6 @@
 [
-  { "id": 1, "nombre": "Tortas", "slug": "tortas" },
-  { "id": 2, "nombre": "Budines", "slug": "budines" },
-  { "id": 3, "nombre": "Boxes Dulces", "slug": "boxes-dulces" },
-  { "id": 4, "nombre": "Tartas", "slug": "tartas" }
+  { "id": 1, "nombre": "Tortas", "slug": "tortas", "imagen": "/images/categorias/tortas.jpg" },
+  { "id": 2, "nombre": "Budines", "slug": "budines", "imagen": "/images/categorias/budines.jpg" },
+  { "id": 3, "nombre": "Boxes Dulces", "slug": "boxes-dulces", "imagen": "/images/categorias/boxes-dulce.jpg" },
+  { "id": 4, "nombre": "Tartas", "slug": "tartas", "imagen": "/images/categorias/tartas.jpg" }
 ]
