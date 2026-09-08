@@ -20,7 +20,12 @@ const TIPOS_EVENTO = [
   },
 ]
 
-const GALERIA_EJEMPLOS = ['🎂', '🧁', '🍰', '🍬']
+const trabajosAnteriores = [
+  { imagen: '/images/eventos/trabajo-1.jpg', alt: 'Mesa dulce armada para un evento anterior' },
+  { imagen: '/images/eventos/trabajo-2.jpg', alt: 'Torta personalizada para un evento anterior' },
+  { imagen: '/images/eventos/trabajo-3.jpg', alt: 'Candy bar armado para un evento anterior' },
+  { imagen: '/images/eventos/trabajo-4.jpg', alt: 'Cajas dulces armadas para un evento anterior' },
+]
 
 const PASOS_EVENTO = [
   { titulo: 'Nos contás tu idea', texto: 'Fecha, cantidad de invitados y qué tenías en mente.' },
@@ -41,7 +46,7 @@ function PedidosEspeciales() {
 
   return (
     <>
-      <section className="hero">
+      <section className="hero hero-eventos">
         <div className="hero-inner">
           <div>
             <h1>
@@ -57,11 +62,11 @@ function PedidosEspeciales() {
             </a>
           </div>
           <div className="hero-photo">
-            <svg viewBox="0 0 24 24" fill="none" stroke="#B54784" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round">
-              <path d="M23 19a2 2 0 0 1-2 2H3a2 2 0 0 1-2-2V8a2 2 0 0 1 2-2h4l2-3h6l2 3h4a2 2 0 0 1 2 2z" />
-              <circle cx="12" cy="13" r="4" />
-            </svg>
-            <span>Foto de una mesa dulce acá</span>
+            <img
+              src="/images/eventos/hero-mesa-dulce.jpg"
+              alt="Mesa dulce armada para un evento"
+              onError={(e) => { e.target.style.display = 'none' }}
+            />
           </div>
         </div>
       </section>
@@ -93,9 +98,13 @@ function PedidosEspeciales() {
             <p>Una idea de lo que ya armamos para otros eventos.</p>
           </div>
           <div className="galeria-grid">
-            {GALERIA_EJEMPLOS.map((emoji, index) => (
-              <div className="galeria-item" key={index}>
-                {emoji}
+            {trabajosAnteriores.map((trabajo) => (
+              <div className="galeria-item" key={trabajo.imagen}>
+                <img
+                  src={trabajo.imagen}
+                  alt={trabajo.alt}
+                  onError={(e) => { e.target.style.display = 'none' }}
+                />
               </div>
             ))}
           </div>
