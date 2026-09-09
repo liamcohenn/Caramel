@@ -3,8 +3,9 @@ import { useCarrito } from '../context/CarritoContext'
 
 function ProductoCard({ producto }) {
   const { dispatch } = useCarrito()
-  const { id, nombre, descripcion, precio, fotos } = producto
+  const { id, nombre, descripcion, precio, fotos, tipo } = producto
   const foto = fotos && fotos[0]
+  const esCajaMixta = tipo === 'caja-mixta'
 
   function handleAgregar() {
     dispatch({ type: 'AGREGAR', payload: { id, nombre, precio, foto } })
@@ -25,9 +26,15 @@ function ProductoCard({ producto }) {
         </div>
       </Link>
       <div className="card-footer">
-        <button type="button" className="add-btn" onClick={handleAgregar}>
-          🛍 Agregar al Carrito
-        </button>
+        {esCajaMixta ? (
+          <Link className="add-btn" to={`/productos/${id}`}>
+            🛍 Elegir sabores
+          </Link>
+        ) : (
+          <button type="button" className="add-btn" onClick={handleAgregar}>
+            🛍 Agregar al Carrito
+          </button>
+        )}
       </div>
     </div>
   )

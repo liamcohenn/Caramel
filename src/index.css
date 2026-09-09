@@ -417,6 +417,7 @@ nav {
   font-weight: 700;
   font-size: .88rem;
   cursor: pointer;
+  text-decoration: none;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -885,6 +886,78 @@ nav {
   background: var(--magenta-dark);
 }
 
+.add-btn-lg:disabled {
+  opacity: .45;
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+.add-btn-lg:disabled:hover {
+  background: var(--magenta);
+}
+
+/* ---------- BOX MIXTO BUILDER ---------- */
+.box-mixto-contador {
+  font-weight: 700;
+  color: var(--ink);
+  font-size: .95rem;
+  margin-bottom: 14px;
+}
+
+.box-mixto-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  margin-bottom: 20px;
+}
+
+.box-mixto-chip {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: var(--white);
+  border: 1.5px solid var(--cream);
+  border-radius: 14px;
+  padding: 8px 12px;
+  cursor: pointer;
+  text-align: left;
+  font-family: 'Quicksand', sans-serif;
+  font-size: .88rem;
+  font-weight: 600;
+  color: var(--ink);
+  transition: border-color .15s ease, background .15s ease, opacity .15s ease;
+}
+
+.box-mixto-chip:hover:not(:disabled) {
+  border-color: var(--magenta);
+}
+
+.box-mixto-chip.elegido {
+  border-color: var(--magenta);
+  background: var(--cream);
+}
+
+.box-mixto-chip:disabled {
+  opacity: .4;
+  cursor: not-allowed;
+}
+
+.box-mixto-chip-img {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  overflow: hidden;
+  flex-shrink: 0;
+  background: linear-gradient(150deg, var(--cream), var(--amber-soft));
+}
+
+.box-mixto-chip-img img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
 .nota {
   display: flex;
   gap: 10px;
@@ -1026,6 +1099,14 @@ nav {
   margin: 0 0 4px;
   font-size: .92rem;
   color: var(--ink);
+}
+
+.drawer-item .di-info .di-detalle {
+  display: block;
+  color: var(--ink-soft);
+  font-size: .78rem;
+  line-height: 1.4;
+  margin-bottom: 4px;
 }
 
 .drawer-item .di-info .di-price {
@@ -1537,5 +1618,40 @@ footer a:hover {
   }
   .pasos-grid {
     grid-template-columns: 1fr;
+  }
+}
+
+/* Celulares angostos: el grid de productos se mantiene en 2 columnas (ver .grid
+   arriba), pero con el padding de escritorio la tarjeta queda demasiado angosta para
+   que "Agregar al Carrito" entre en una sola línea — sin esto, el botón redondeado
+   se ve como un círculo achicado en vez de un rectángulo. */
+@media (max-width: 480px) {
+  .wrap,
+  .products,
+  .cat-section,
+  .relacionados {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+
+  .grid {
+    gap: 12px;
+  }
+
+  .card-body,
+  .card-footer {
+    padding-left: 10px;
+    padding-right: 10px;
+  }
+
+  .add-btn {
+    font-size: .78rem;
+    gap: 4px;
+  }
+}
+
+@media (max-width: 600px) {
+  .card-desc {
+    display: none;
   }
 }

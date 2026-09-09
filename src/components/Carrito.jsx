@@ -44,29 +44,36 @@ function Carrito() {
                 </div>
                 <div className="di-info">
                   <h4>{item.nombre}</h4>
+                  {item.detalle && (
+                    <span className="di-detalle">
+                      {item.detalle.map((d) => `${d.cantidad} ${d.nombre}`).join(' · ')}
+                    </span>
+                  )}
                   <span className="di-price">
                     ${(item.precio * item.cantidad).toLocaleString('es-AR')}
                   </span>
                 </div>
-                <div className="di-qty">
-                  <button
-                    type="button"
-                    onClick={() =>
-                      dispatch({ type: 'CAMBIAR_CANTIDAD', payload: { id: item.id, delta: -1 } })
-                    }
-                  >
-                    −
-                  </button>
-                  <span>{item.cantidad}</span>
-                  <button
-                    type="button"
-                    onClick={() =>
-                      dispatch({ type: 'CAMBIAR_CANTIDAD', payload: { id: item.id, delta: 1 } })
-                    }
-                  >
-                    +
-                  </button>
-                </div>
+                {!item.detalle && (
+                  <div className="di-qty">
+                    <button
+                      type="button"
+                      onClick={() =>
+                        dispatch({ type: 'CAMBIAR_CANTIDAD', payload: { id: item.id, delta: -1 } })
+                      }
+                    >
+                      −
+                    </button>
+                    <span>{item.cantidad}</span>
+                    <button
+                      type="button"
+                      onClick={() =>
+                        dispatch({ type: 'CAMBIAR_CANTIDAD', payload: { id: item.id, delta: 1 } })
+                      }
+                    >
+                      +
+                    </button>
+                  </div>
+                )}
                 <button
                   type="button"
                   className="di-remove"

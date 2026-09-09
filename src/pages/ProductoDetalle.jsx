@@ -3,6 +3,7 @@ import { Link, useParams } from 'react-router-dom'
 import categorias from '../data/categorias.json'
 import productos from '../data/productos.json'
 import ProductoCard from '../components/ProductoCard'
+import BoxMixtoBuilder from '../components/BoxMixtoBuilder'
 import { useCarrito } from '../context/CarritoContext'
 
 function ProductoDetalle() {
@@ -25,7 +26,9 @@ function ProductoDetalle() {
 
 function ProductoEncontrado({ producto }) {
   const { dispatch } = useCarrito()
-  const { id, nombre, descripcion, precio, categoriaId, fotos, porciones, unidades } = producto
+  const { id, nombre, descripcion, precio, categoriaId, fotos, porciones, unidades, tipo, saboresPorCaja, unidadesPorSabor } =
+    producto
+  const unidadesTotales = unidades ?? (saboresPorCaja && unidadesPorSabor ? saboresPorCaja * unidadesPorSabor : null)
   const categoria = categorias.find((c) => c.id === categoriaId)
 
   const [fotoActiva, setFotoActiva] = useState(0)
@@ -100,31 +103,37 @@ function ProductoEncontrado({ producto }) {
 
             <div className="badges">
               {porciones && <div className="badge">🍽 {porciones} porciones</div>}
-              {unidades && <div className="badge">📦 Caja x{unidades} unidades</div>}
+              {unidadesTotales && <div className="badge">📦 Caja x{unidadesTotales} unidades</div>}
               <div className="badge">📅 Con 48hs de anticipación</div>
             </div>
 
-            <div className="qty-row">
-              <div className="qty-selector">
-                <button type="button" onClick={() => setCantidad((c) => Math.max(1, c - 1))}>
-                  −
-                </button>
-                <span>{cantidad}</span>
-                <button type="button" onClick={() => setCantidad((c) => c + 1)}>
-                  +
-                </button>
-              </div>
-            </div>
+            {tipo === 'caja-mixta' ? (
+              <BoxMixtoBuilder producto={producto} />
+            ) : (
+              <>
+                <div className="qty-row">
+                  <div className="qty-selector">
+                    <button type="button" onClick={() => setCantidad((c) => Math.max(1, c - 1))}>
+                      −
+                    </button>
+                    <span>{cantidad}</span>
+                    <button type="button" onClick={() => setCantidad((c) => c + 1)}>
+                      +
+                    </button>
+                  </div>
+                </div>
 
-            <button
-              type="button"
-              className="add-btn-lg"
-              onClick={handleAgregar}
-              disabled={!precioValido}
-              title={!precioValido ? 'Precio a confirmar' : undefined}
-            >
-              🛍 Agregar al Carrito
-            </button>
+                <button
+                  type="button"
+                  className="add-btn-lg"
+                  onClick={handleAgregar}
+                  disabled={!precioValido}
+                  title={!precioValido ? 'Precio a confirmar' : undefined}
+                >
+                  🛍 Agregar al Carrito
+                </button>
+              </>
+            )}
 
             <div className="nota">
               <span className="icon">💬</span>

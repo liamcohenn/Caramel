@@ -14,6 +14,8 @@ function carritoReducer(carrito, action) {
       }
       return [...carrito, { ...producto, cantidad }]
     }
+    case 'AGREGAR_PERSONALIZADO':
+      return [...carrito, action.payload]
     case 'QUITAR':
       return carrito.filter((item) => item.id !== action.payload.id)
     case 'CAMBIAR_CANTIDAD': {
