@@ -14,7 +14,7 @@
   :root:not([data-theme="light"]) {
     --bg: #2B1F27;
     --white: #352832;
-    --ink: #F6ECEF;
+    --ink: #F6C77B;
     --ink-soft: #C9B7C1;
     --cream: #4A3540;
   }
